@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P!KTiK - Clothing Store</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0d1b2a; /* Navy black background */
+            color: white;
+        }
+
+        /* Top navigation bar */
+        nav {
+            background-color: white;
+            color: #000;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Logo in the center */
+        .logo {
+            font-size: 32px;
+            color: #e6b800; /* Golden color */
+            font-weight: bold;
+            text-align: center;
+            flex-grow: 1;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Links on the left side */
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            color: #000;
+            margin: 0 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        /* Dropdown content */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            z-index: 1;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            text-align: left;
+            padding: 10px 0;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 18px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f77f00;
+            color: white;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Main content */
+        .main-content {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .main-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .main-content p {
+            font-size: 24px;
+            margin-bottom: 50px;
+        }
+
+        .main-content a {
+            padding: 15px 30px;
+            background-color: #e63946;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+
+        .main-content a:hover {
+            background-color: #f77f00;
+        }
+
+        /* Social Media Links */
+        .social-media a {
+            display: inline-block;
+            margin: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* About Section */
+        .about {
+            text-align: center;
+            padding: 50px 0;
+            background-color: #333;
+        }
+
+        .about h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            font-size: 18px;
+        }
+
+        /* Login/Register Links on the right */
+        .login-register {
+            display: flex;
+            align-items: center;
+        }
+
+        .login-register a {
+            color: #000;
+            margin-left: 20px;
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        /* Dropdown hover effect */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Social Media Dropdown Hover */
+        .social-media-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Language Selection */
+        .language-selector {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .language-selector a {
+            margin-left: 10px;
+			cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top navigation bar -->
+    <nav>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <div class="dropdown" onmouseover="showDropdown('productDropdown')" onmouseout="hideDropdown('productDropdown')">
+                <a href="javascript:void(0)">Products</a>
+                <div id="productDropdown" class="dropdown-content">
+                    <a href="#">Men's Clothing</a>
+                    <a href="#">Women's Clothing</a>
+                    <a href="#">Kids' Clothing</a>
+                </div>
+            </div>
+
+            <!-- Social Media Dropdown -->
+            <div class="dropdown social-media-dropdown" onmouseover="showDropdown('socialDropdown')" onmouseout="hideDropdown('socialDropdown')">
+                <a href="javascript:void(0)">Social Media</a>
+                <div id="socialDropdown" class="dropdown-content">
+                    <a href="https://www.instagram.com/3lo0_xx" target="_blank">Instagram</a>
+                    <a href="https://wa.me/+9647705595915" target="_blank">WhatsApp</a>
+                    <a href="https://t.me/Xx3lo0xX" target="_blank">Telegram</a>
+                </div>
+            </div>
+
+            <a href="#">About</a>
+        </div>
+
+        <!-- Store name in the center -->
+        <div class="logo">
+            P!KTiK
+        </div>
+
+        <!-- Language Selector and Login/Register links on the right -->
+        <div class="language-selector">
+            <a href="javascript:void(0)" onclick="changeLanguage('en')">EN</a>
+            <a href="javascript:void(0)" onclick="changeLanguage('ar')">AR</a>
+        </div>
+        <div class="login-register">
+            <a href="javascript:void(0)" onclick="openLoginModal()">Login</a>
+            <a href="javascript:void(0)" onclick="openRegisterModal()">Register</a>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <h1 id="welcome-text">Welcome to P!KTiK Clothing Store</h1>
+        <p id="description-text">Discover the latest fashion trends now!</p>
+        <a href="#">Shop Now</a>
+    </div>
+
+    <!-- About Section -->
+    <div class="about">
+        <h2 id="about-heading">About P!KTiK</h2>
+        <p id="about-description">
+            P!KTiK is your go-to online clothing store offering the latest trends in fashion. 
+            We provide a wide variety of high-quality clothing options for every occasion. 
+            Whether you're looking for casual wear or something more stylish, we've got you covered. 
+            Our mission is to provide trendy, comfortable, and affordable clothing to make you feel confident and stylish!
+        </p>
+    </div>
+
+    <script>
+        // Show dropdown when mouse is over
+        function showDropdown(dropdownId) {
+            var dropdown = document.getElementById(dropdownId);
+            dropdown.style.display = "block";
+        }
+
+        // Hide dropdown when mouse is out
+        function hideDropdown(dropdownId) {
+            var dropdown = document.getElementById(dropdownId);
+            dropdown.style.display = "none";
+        }
+
+        // Login and Register modal open functions (placeholders)
+        function openLoginModal() {
+            alert('Open login modal');
+        }
+
+        function openRegisterModal() {
+            alert('Open register modal');
+        }
+
+        // Language change function
+        function changeLanguage(language) {
+            if (language === 'ar') {
+                document.getElementById('welcome-text').innerText = 'مرحباً بكم في متجر P!KTiK للملابس';
+                document.getElementById('description-text').innerText = 'اكتشف أحدث صيحات الموضة الآن!';
+                document.getElementById('about-heading').innerText = 'عن P!KTiK';
+                document.getElementById('about-description').innerText = 'P!KTiK هو متجرك المفضل على الإنترنت الذي يقدم أحدث صيحات الموضة. نقدم مجموعة واسعة من خيارات الملابس عالية الجودة لكل مناسبة.';
+            } else {
+                document.getElementById('welcome-text').
+				innerText = 'Welcome to P!KTiK Clothing Store';
+                document.getElementById('description-text').innerText = 'Discover the latest fashion trends now!';
+                document.getElementById('about-heading').innerText = 'About P!KTiK';
+                document.getElement
+				document.getElementById('about-description').innerText = 'P!KTiK is your go-to online clothing store offering the latest trends in fashion. We provide a wide variety of high-quality clothing options for every occasion.';
+            }
+        }
+    </script>
+
+</body>
+</html>
